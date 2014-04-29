@@ -6,7 +6,7 @@ var methods = {
   'C': 'bezierCurveTo'
 }
 
-module.exports = function(segments, context) {
+module.exports = function(context, segments) {
   context.beginPath()
 
   // Make path easy to reproduce.

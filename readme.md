@@ -12,7 +12,7 @@ $ npm install michaelrhodes/draw-svg-path
 
 ## API
 ```js
-draw(path, context)
+draw(context, path)
 ```
 
 ### Example
@@ -28,7 +28,7 @@ context.lineWidth = 1
 context.strokeStyle = '#000000'
 context.fillStyle = 'transparent'
 // Do actual drawing
-draw(path, context)
+draw(context, path)
 context.stroke()
 ```
 

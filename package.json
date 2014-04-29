@@ -1,6 +1,6 @@
 {
   "name": "draw-svg-path",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Draws an SVG path onto a canvas context.",
   "main": "index.js",
   "dependencies": {
