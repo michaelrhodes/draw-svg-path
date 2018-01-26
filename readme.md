@@ -3,7 +3,7 @@ draw svg paths onto canvas contexts
 
 ## install
 ```sh
-$ npm install michaelrhodes/draw-svg-path#2.0.0
+$ npm install michaelrhodes/draw-svg-path#2.0.1
 ```
 
 ## use

@@ -1,6 +1,6 @@
 var abs = require('abs-svg-path')
 var parse = require('parse-svg-path')
-var normal = require('normalize-svg-path')
+var curvify = require('curvify-svg-path')
 
 var methods = { C: 'bezierCurveTo', M: 'moveTo' }
 
@@ -8,7 +8,7 @@ module.exports = draw
 
 function draw (ctx, path) {
   var seg, cmd, i = 0
-  var segments = normal(abs(
+  var segments = curvify(abs(
     typeof path == 'string' ?
       parse(path) :
       path
