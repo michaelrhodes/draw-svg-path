@@ -1,36 +1,33 @@
 # draw-svg-path
-draw-svg-path draws a [parsed SVG path](https://github.com/jkroso/parse-svg-path) onto a canvas context.
+draw svg paths onto canvas contexts
 
-[![Browser support](https://ci.testling.com/michaelrhodes/draw-svg-path.png)](https://ci.testling.com/michaelrhodes/draw-svg-path)
-
-<small>Older browsers might require a polyfill for [Array.prototype.forEach](http://kangax.github.io/es5-compat-table/#Array.prototype.forEach).</small>
-
-## Install
+## install
 ```sh
-$ npm install michaelrhodes/draw-svg-path
+$ npm install michaelrhodes/draw-svg-path#2.0.0
 ```
 
-## API
-```js
-draw(context, path)
-```
-
-### Example
+## use
 ``` js
-var parse = require('parse-svg-path')
 var draw = require('draw-svg-path')
+var parse = require('parse-svg-path')
 
-var path = parse('M10 10 L15 15')
-var canvas = document.querySelector('canvas')
-var context = canvas.getContext('2d')
+var canvas = document.createElement('canvas')
+var ctx = canvas.getContext('2d')
 
-context.lineWidth = 1
-context.strokeStyle = '#000000'
-context.fillStyle = 'transparent'
-// Do actual drawing
-draw(context, path)
-context.stroke()
+ctx.beginPath()
+ctx.lineWidth = 1
+ctx.strokeStyle = '#000000'
+ctx.fillStyle = 'transparent'
+
+// Accepts /^(un)?parsed$/ paths
+draw(ctx, parse('M20 20 L25 25'))
+draw(ctx, 'M10 10 L15 15')
+
+ctx.stroke()
+ctx.closePath()
+
+document.body.appendChild(canvas)
 ```
 
-### License
+## obey
 [MIT](http://opensource.org/licenses/MIT)

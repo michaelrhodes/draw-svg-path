@@ -1,24 +1,21 @@
 var abs = require('abs-svg-path')
-var normalize = require('normalize-svg-path')
+var parse = require('parse-svg-path')
+var normal = require('normalize-svg-path')
 
-var methods = {
-  'M': 'moveTo',
-  'C': 'bezierCurveTo'
-}
+var methods = { C: 'bezierCurveTo', M: 'moveTo' }
 
-module.exports = function(context, segments) {
-  context.beginPath()
+module.exports = draw
 
-  // Make path easy to reproduce.
-  normalize(abs(segments)).forEach(
-    function(segment) {
-      var command = segment[0]
-      var args = segment.slice(1)
+function draw (ctx, path) {
+  var seg, cmd, i = 0
+  var segments = normal(abs(
+    typeof path == 'string' ?
+      parse(path) :
+      path
+  ))
 
-      // Convert the path command to a context method.
-      context[methods[command]].apply(context, args)
-    }
-  )
-
-  context.closePath()
+  while (seg = segments[i++]) {
+    cmd = ctx[methods[seg[0]]]
+    cmd && cmd.apply(ctx, seg.slice(1))
+  }
 }
